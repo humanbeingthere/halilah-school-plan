@@ -1,180 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>الخطة الفصلية | ثانوية الحليلة الأولى</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Tahoma", Arial, sans-serif;
-      background: #f5f7f8;
-      color: #0b1f3a;
-      line-height: 1.8;
-    }
-
-    header {
-      background: #0b1f3a;
-      color: white;
-      padding: 25px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    header p {
-      color: #dceee6;
-      font-size: 17px;
-    }
-
-    .hero {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .hero h2 {
-      color: #0b1f3a;
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      color: #555;
-      font-size: 17px;
-    }
-
-    .cards {
-      max-width: 1100px;
-      margin: 20px auto 50px;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 25px 20px;
-      text-align: center;
-      box-shadow: 0 5px 18px rgba(11, 31, 58, 0.10);
-      border-top: 5px solid #2e7d5b;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .icon {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .card h3 {
-      color: #0b1f3a;
-      margin-bottom: 8px;
-      font-size: 20px;
-    }
-
-    .card p {
-      color: #666;
-      font-size: 14px;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 9px 20px;
-      background: #2e7d5b;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-    }
-
-    footer {
-      background: #0b1f3a;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 23px;
-      }
-
-      .hero h2 {
-        font-size: 23px;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>منصة الخطة الفصلية | ثانوية الحليلة الأولى</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+<header class="hero">
+  <div>
+    <div class="eyebrow">منصة مدرسية إلكترونية</div>
+    <h1>منصة الخطة الفصلية</h1>
+    <h2>ثانوية الحليلة الأولى</h2>
+    <p>مديرة المدرسة: <strong>سهاد الكشي</strong></p>
+  </div>
+  <div class="hero-mark">ح<br><span>1</span></div>
+</header>
 
-  <header>
-    <h1>ثانوية الحليلة الأولى</h1>
-    <p>الخطة الفصلية للأنشطة والفعاليات التعليمية</p>
-  </header>
+<nav class="tabs">
+  <button class="tab active" data-tab="dashboard">الرئيسية</button>
+  <button class="tab" data-tab="plan">الخطة الفصلية</button>
+  <button class="tab" data-tab="activities">الأنشطة والفعاليات</button>
+  <button class="tab" data-tab="backup">الحفظ والاستعادة</button>
+</nav>
 
-  <section class="hero">
-    <h2>مرحبًا بكم في المنصة التعليمية</h2>
-    <p>
-      منصة إلكترونية لتنظيم ومتابعة الخطط والأنشطة والفعاليات التعليمية
-    </p>
-  </section>
+<main>
+<section id="dashboard" class="panel active">
+  <div class="section-head">
+    <div><span class="eyebrow">لوحة المدرسة</span><h3>ملخص الخطة</h3></div>
+    <button class="primary" onclick="window.print()">طباعة</button>
+  </div>
+  <div class="cards">
+    <div class="stat"><span>الأنشطة</span><b id="activityCount">0</b></div>
+    <div class="stat"><span>المنفذ</span><b id="doneCount">0</b></div>
+    <div class="stat"><span>قيد التنفيذ</span><b id="progressCount">0</b></div>
+    <div class="stat"><span>مخطط</span><b id="plannedCount">0</b></div>
+  </div>
+  <div class="school-card">
+    <h4>بيانات المنصة</h4>
+    <label>العام الدراسي <input id="year" value="1448-1449هـ"></label>
+    <label>الفصل الدراسي
+      <select id="semester">
+        <option>الفصل الدراسي الأول</option>
+        <option>الفصل الدراسي الثاني</option>
+        <option>الفصل الدراسي الثالث</option>
+      </select>
+    </label>
+    <label>اسم المدرسة <input id="school" value="ثانوية الحليلة الأولى"></label>
+    <label>مديرة المدرسة <input id="principal" value="سهاد الكشي"></label>
+    <button class="primary" onclick="saveSettings()">حفظ البيانات</button>
+  </div>
+</section>
 
-  <section class="cards">
+<section id="plan" class="panel">
+  <div class="section-head">
+    <div><span class="eyebrow">الخطة</span><h3>الخطة الفصلية</h3></div>
+    <button class="primary" onclick="addActivity()">+ إضافة بند</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>م</th><th>الأسبوع</th><th>المجال</th><th>النشاط / الفعالية</th><th>التاريخ</th><th>الحالة</th><th></th></tr></thead>
+      <tbody id="planBody"></tbody>
+    </table>
+  </div>
+</section>
 
-    <div class="card">
-      <div class="icon">📚</div>
-      <h3>الخطط الفصلية</h3>
-      <p>عرض الخطط الفصلية التعليمية للعام الدراسي</p>
-      <a href="#">دخول</a>
-    </div>
+<section id="activities" class="panel">
+  <div class="section-head">
+    <div><span class="eyebrow">إدارة</span><h3>الأنشطة والفعاليات التعليمية</h3></div>
+    <button class="primary" onclick="addActivity()">+ نشاط جديد</button>
+  </div>
+  <div id="activityList" class="activity-list"></div>
+</section>
 
-    <div class="card">
-      <div class="icon">🎓</div>
-      <h3>الصف الثاني الثانوي</h3>
-      <p>خطط الفصل الدراسي الأول والثاني</p>
-      <a href="#">عرض الخطط</a>
-    </div>
+<section id="backup" class="panel">
+  <div class="section-head">
+    <div><span class="eyebrow">بياناتك</span><h3>الحفظ والاستعادة</h3></div>
+  </div>
+  <div class="backup-box">
+    <p>احفظ نسخة احتياطية من الخطة على جهازك بصيغة JSON، ثم يمكنك استعادتها لاحقًا.</p>
+    <button class="primary" onclick="exportData()">تنزيل نسخة احتياطية</button>
+    <label class="file-btn">استعادة نسخة
+      <input type="file" accept=".json" onchange="importData(event)">
+    </label>
+    <button class="danger" onclick="resetData()">إعادة ضبط البيانات</button>
+  </div>
+</section>
+</main>
 
-    <div class="card">
-      <div class="icon">🎓</div>
-      <h3>الصف الثالث الثانوي</h3>
-      <p>خطط الفصل الدراسي الأول والثاني</p>
-      <a href="#">عرض الخطط</a>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎯</div>
-      <h3>الأنشطة والفعاليات</h3>
-      <p>البرامج والفعاليات التعليمية في المدرسة</p>
-      <a href="#">عرض الأنشطة</a>
-    </div>
-
-  </section>
-
-  <footer>
-    ثانوية الحليلة الأولى
-    <br>
-    الخطة الفصلية للأنشطة والفعاليات التعليمية
-  </footer>
-
+<footer>منصة الخطة الفصلية — ثانوية الحليلة الأولى</footer>
+<script src="script.js"></script>
 </body>
 </html>
