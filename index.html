@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>منصة الخطة الفصلية | ثانوية الحليلة الأولى</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div>
+    <div class="eyebrow">منصة مدرسية إلكترونية</div>
+    <h1>منصة الخطة الفصلية</h1>
+    <h2>ثانوية الحليلة الأولى</h2>
+    <p>مديرة المدرسة: <strong>سهاد الكشي</strong></p>
+  </div>
+  <div class="hero-mark">ح<br><span>1</span></div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="dashboard">الرئيسية</button>
+  <button class="tab" data-tab="plan">الخطة الفصلية</button>
+  <button class="tab" data-tab="activities">الأنشطة والفعاليات</button>
+  <button class="tab" data-tab="backup">الحفظ والاستعادة</button>
+</nav>
+
+<main>
+<section id="dashboard" class="panel active">
+  <div class="section-head">
+    <div><span class="eyebrow">لوحة المدرسة</span><h3>ملخص الخطة</h3></div>
+    <button class="primary" onclick="window.print()">طباعة</button>
+  </div>
+  <div class="cards">
+    <div class="stat"><span>الأنشطة</span><b id="activityCount">0</b></div>
+    <div class="stat"><span>المنفذ</span><b id="doneCount">0</b></div>
+    <div class="stat"><span>قيد التنفيذ</span><b id="progressCount">0</b></div>
+    <div class="stat"><span>مخطط</span><b id="plannedCount">0</b></div>
+  </div>
+  <div class="school-card">
+    <h4>بيانات المنصة</h4>
+    <label>العام الدراسي <input id="year" value="1448-1449هـ"></label>
+    <label>الفصل الدراسي
+      <select id="semester">
+        <option>الفصل الدراسي الأول</option>
+        <option>الفصل الدراسي الثاني</option>
+        <option>الفصل الدراسي الثالث</option>
+      </select>
+    </label>
+    <label>اسم المدرسة <input id="school" value="ثانوية الحليلة الأولى"></label>
+    <label>مديرة المدرسة <input id="principal" value="سهاد الكشي"></label>
+    <button class="primary" onclick="saveSettings()">حفظ البيانات</button>
+  </div>
+</section>
+
+<section id="plan" class="panel">
+  <div class="section-head">
+    <div><span class="eyebrow">الخطة</span><h3>الخطة الفصلية</h3></div>
+    <button class="primary" onclick="addActivity()">+ إضافة بند</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>م</th><th>الأسبوع</th><th>المجال</th><th>النشاط / الفعالية</th><th>التاريخ</th><th>الحالة</th><th></th></tr></thead>
+      <tbody id="planBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="activities" class="panel">
+  <div class="section-head">
+    <div><span class="eyebrow">إدارة</span><h3>الأنشطة والفعاليات التعليمية</h3></div>
+    <button class="primary" onclick="addActivity()">+ نشاط جديد</button>
+  </div>
+  <div id="activityList" class="activity-list"></div>
+</section>
+
+<section id="backup" class="panel">
+  <div class="section-head">
+    <div><span class="eyebrow">بياناتك</span><h3>الحفظ والاستعادة</h3></div>
+  </div>
+  <div class="backup-box">
+    <p>احفظ نسخة احتياطية من الخطة على جهازك بصيغة JSON، ثم يمكنك استعادتها لاحقًا.</p>
+    <button class="primary" onclick="exportData()">تنزيل نسخة احتياطية</button>
+    <label class="file-btn">استعادة نسخة
+      <input type="file" accept=".json" onchange="importData(event)">
+    </label>
+    <button class="danger" onclick="resetData()">إعادة ضبط البيانات</button>
+  </div>
+</section>
+</main>
+
+<footer>منصة الخطة الفصلية — ثانوية الحليلة الأولى</footer>
+<script src="script.js"></script>
+</body>
+</html>
